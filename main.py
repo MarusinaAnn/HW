@@ -38,6 +38,29 @@ get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'
 
 print('\nЗадание 3')
 
+import os
+
+def make_file(file1, file2, file3):
+    counter = []
+    for file in (file1, file2, file3):
+        file_name = file
+        with open(file, encoding='utf8') as files:
+            content_file = files.readlines()
+            counter.append([file_name, content_file])
+
+    counter.sort(key=lambda x: len(x[1]))
+
+    with open('4.txt', 'w', encoding='utf8') as files:
+        for file in counter:
+            res = f'{file[0]}\n{len(file[1])}\n{"".join(file[1])}\n\n'
+            files.writelines(res)
+
+    with open('4.txt', 'r', encoding='utf8') as files:
+        content = files.read()
+        print(content)
+
+make_file('1.txt', '2.txt', '3.txt')
+
 
 
                    
